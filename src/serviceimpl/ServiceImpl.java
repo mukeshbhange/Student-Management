@@ -63,6 +63,14 @@ public class ServiceImpl implements IStudentService {
 			capitalLName = validate.validateEmail(student.getEmail());
 		}
 		
+		student.setPassword(UtilScanner.getString("Password: "));
+		boolean password = validate.validatePassword(student.getPassword());
+		while(password == false) {
+			System.out.println("Minlength:8 1 UperCase 1 number 1specialchar");
+			student.setPassword(UtilScanner.getString("ReEnter password: "));
+			password = validate.validatePassword(student.getPassword());
+		}
+		
 		student.setMobileNo(UtilScanner.getString("Mobile No: "));
 		boolean mobNo = validate.validateMobileNo(student.getMobileNo());
 		while(mobNo == false) {
